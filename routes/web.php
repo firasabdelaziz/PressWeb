@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,23 @@ Route::get('/profile/{id}',function($id){
     dd($profile->user);
 });
 
-/** **** */
+/** */
+
+/** eager loading */
+
+Route::get('/users',function(){
+
+    /** this give load so bad with 9.26s and 136 query */
+    // $users=\App\Models\User::all();
+    /** Solution is eager loading with 1.54 and 2 query  */
+    $users=\App\Models\User::with('profile')->get();
+    Debugbar::info($users);
+    foreach ($users as $user) {
+        Debugbar::info($user->profile);
+    }
+    return view("welcome");
+
+
+});
+
+/** */
