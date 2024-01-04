@@ -55,6 +55,10 @@ class User extends Authenticatable
 
     public function profile()
     {
+        /** some tips
+         * the name of filed foreign key (user_id by default) can be flexible depends on name put it in the table profile
+         * return $this->hasOne(Profile::class,'author_id','id');
+        */
         return $this->hasOne(Profile::class);
     }
 
