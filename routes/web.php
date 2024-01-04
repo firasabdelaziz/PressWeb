@@ -55,3 +55,20 @@ Route::get('/users',function(){
 });
 
 /** */
+
+/** one to many relationship */
+Route::get('/user/{id}/posts',function($id){
+    $user = \App\Models\User::findOrFail($id);
+    foreach ($user->posts as $post) {
+        Debugbar::info($post->title);
+    }
+    return view('welcome');
+});
+
+Route::get('post/{id}/user',function($id){
+    $post = \App\Models\Post::findOrFail($id);
+    Debugbar::info($post->user->name);
+    return view('welcome');
+});
+
+/** */
