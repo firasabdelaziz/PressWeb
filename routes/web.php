@@ -140,3 +140,36 @@ Route::get('country/{id}/addPost',function($id){
     return view('welcome');
 });
 /** */
+
+/** query model by relationship */
+ROute::get('withposts',function(){
+    //$users = \App\Models\User::whereHas('posts')->get();
+    //$users = \App\Models\User::doesnthave('posts')->get();
+
+   //$users = \App\Models\User::whereHas('posts',function($query){
+   //     $query->whereIn('id',[1,2]);
+   //})->get();
+
+
+    //$users = \App\Models\User::has('posts')->orhas('photos')->get();
+    // more scalable
+
+    $posts = true;
+    $photo = false;
+
+    $users = \App\Models\User::where(function($query) use ($posts,$photo){
+        if($posts){
+            $query->orwhereHas('posts',function($q){
+                $q->where('title','Aut praesentium illum a omnis iusto aut.');
+            });
+        }
+        if($photo){
+            $query->orwhereHas('photos');
+
+        }
+    })->get();
+
+    Debugbar::info($users);
+    return view('welcome');
+});
+/** */
