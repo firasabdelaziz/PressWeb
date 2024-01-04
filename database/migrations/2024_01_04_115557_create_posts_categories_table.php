@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained();
             $table->foreignId('category_id')->constrained();
+            //$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

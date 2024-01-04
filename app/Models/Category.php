@@ -10,6 +10,6 @@ class Category extends Model
     use HasFactory;
     public function posts()
     {
-        return $this->belongsToMany(Post::class, 'posts_categories')->withPivot('column1', 'column2');
+        return $this->belongsToMany(Post::class, 'posts_categories');
     }
 }

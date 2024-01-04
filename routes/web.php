@@ -72,3 +72,25 @@ Route::get('post/{id}/user',function($id){
 });
 
 /** */
+
+/** many to many relationship */
+
+Route::get('categories',function(){
+    $categories=\App\Models\Category::with('posts')->get();
+    //$categories=\App\Models\Category::all();
+    foreach ($categories as $category) {
+        Debugbar::info($category->posts);
+    }
+    return view('welcome');
+});
+
+Route::get('posts',function(){
+    $posts=\App\Models\Post::with('categories')->get();
+    //$posts=\App\Models\Post::all();
+    foreach ($posts as $post) {
+        Debugbar::info($post->categories);
+    }
+    return view('welcome');
+});
+
+/** */
