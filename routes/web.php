@@ -100,3 +100,25 @@ Route::get('posts',function(){
 });
 
 /** */
+
+/** polymorph relationship */
+Route::get('post/photos/{id}',function($id){
+    $post=\App\Models\Post::findOrFail($id);
+    Debugbar::info($post->photos);
+    return view('welcome');
+});
+
+Route::get('user/photos/{id}',function($id){
+    $user=\App\Models\User::findOrFail($id);
+    Debugbar::info($user->photos);
+    return view('welcome');
+});
+
+Route::get('user/addPhoto/{id}',function($id){
+    $user=\App\Models\User::findOrFail($id);
+    $user->photos()->create([
+        'url'=>"https://via.placeholder.com/640x480.png/0000aa?text=qui"
+    ]);
+    return view('welcome');
+});
+/** */

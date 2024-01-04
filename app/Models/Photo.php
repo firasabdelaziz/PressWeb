@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
+    protected $fillable = ['url'];
     use HasFactory;
 
     public function imageable()
