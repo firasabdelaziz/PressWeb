@@ -1,11 +1,9 @@
-```markdown
 # Laravel Blog
 
-A simple blog application built with Laravel, featuring user authentication, post creation, comments, user profiles, post categorization, and photo polymorphism.
+A Press application built with Laravel, featuring post creation, comments, user profiles, post categorization, and photo polymorphism.
 
 ## Features
 
-- User authentication and registration
 - Post creation and commenting
 - User profiles with bio information
 - Categorization of posts with many-to-many relationships
@@ -32,15 +30,8 @@ A simple blog application built with Laravel, featuring user authentication, pos
    ./vendor/bin/sail up
    ```
 
-4. Generate models and migrations:
 
-   ```bash
-   ./vendor/bin/sail artisan make:model ... -m
-   ```
-
-5. Define migration columns and relationships
-
-6. Run migrations:
+4. Run migrations:
 
    ```bash
    ./vendor/bin/sail artisan migrate
@@ -58,5 +49,4 @@ Contributions are welcome! Please fork the repository and create a pull request 
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
-```
 
