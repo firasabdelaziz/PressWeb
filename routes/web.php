@@ -79,6 +79,12 @@ Route::get('categories',function(){
     $categories=\App\Models\Category::with('posts')->get();
     //$categories=\App\Models\Category::all();
     foreach ($categories as $category) {
+        // to attach category to posts
+        //$category->posts()->attach([1,2,3]);
+        // to detach
+        //$category->posts()->detach([1,2,3]);
+        // to sync only the id's in array with be there
+        $category->posts()->sync([1,3]);
         Debugbar::info($category->posts);
     }
     return view('welcome');
