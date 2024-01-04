@@ -122,3 +122,21 @@ Route::get('user/addPhoto/{id}',function($id){
     return view('welcome');
 });
 /** */
+
+/** has many through */
+Route::get('country/{id}/posts',function($id){
+    $country=\App\Models\Country::findOrFail($id);
+    Debugbar::info($country->posts);
+    return view('welcome');
+});
+
+Route::get('country/{id}/addPost',function($id){
+    $country=\App\Models\Country::findOrFail($id);
+    $country->posts()->create([
+        'user_id'=>'3',
+        'title'=>'this is relational post title',
+        'content'=>'this is relational post content',
+    ]);
+    return view('welcome');
+});
+/** */
